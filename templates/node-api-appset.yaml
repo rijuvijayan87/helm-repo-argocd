@@ -4,12 +4,12 @@ metadata:
   name: node-api-appset
 spec:
   generators:
-  - list:
-      elements:
-        - name: node-api
+    - list:
+        elements:
+          - name: node-api
   template:
     metadata:
-      name: '{{`{{name}}`}}'
+      name: "{{`{{name}}`}}"
     spec:
       project: default
       source:
@@ -17,9 +17,11 @@ spec:
         targetRevision: HEAD
         path: .
         helm:
-          releaseName: '{{`{{name}}`}}'
+          releaseName: "{{`{{name}}`}}"
       destination:
         server: https://kubernetes.default.svc
         namespace: default
-      syncPolicy: null
-
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
