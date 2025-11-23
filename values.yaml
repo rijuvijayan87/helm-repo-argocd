@@ -634,7 +634,13 @@ configs:
   # -- Repositories list to be used by applications
   ## Creates a secret for each key/value specified below to create repositories
   ## Note: the last example in the list would use a repository credential template, configured under "configs.credentialTemplates".
-  repositories: {}
+  repositories:
+    infra-cluster-deploy:
+      url: https://github.com/rijuvijayan87/infra-cluster-deploy.git
+    infra-application-sets:
+      url: https://github.com/rijuvijayan87/infra-application-sets.git
+    helm-repo-node-api-container:
+      url: https://github.com/rijuvijayan87/helm-repo-node-api-container.git
     # istio-helm-repo:
     #   url: https://storage.googleapis.com/istio-prerelease/daily-build/master-latest-daily/charts
     #   name: istio.io
