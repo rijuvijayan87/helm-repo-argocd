@@ -641,6 +641,8 @@ configs:
       url: https://github.com/rijuvijayan87/infra-application-sets.git
     helm-repo-node-api-container:
       url: https://github.com/rijuvijayan87/helm-repo-node-api-container.git
+    helm-repo-argo-workflows:
+      url: https://github.com/rijuvijayan87/helm-repo-argo-workflows.git
     # istio-helm-repo:
     #   url: https://storage.googleapis.com/istio-prerelease/daily-build/master-latest-daily/charts
     #   name: istio.io
