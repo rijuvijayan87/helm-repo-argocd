@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: node-api-appset
+spec:
+  generators:
+  - list:
+      elements:
+        - name: node-api
+  template:
+    metadata:
+      name: '{{`{{name}}`}}'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/rijuvijayan87/helm-repo-node-api-container.git
+        targetRevision: HEAD
+        path: .
+        helm:
+          releaseName: '{{`{{name}}`}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: default
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
