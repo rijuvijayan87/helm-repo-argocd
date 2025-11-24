@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: argo-events-appset
+spec:
+  generators:
+    - list:
+        elements:
+          - name: argo-events
+  template:
+    metadata:
+      name: "{{`{{name}}`}}"
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/rijuvijayan87/helm-repo-argo-events.git
+        targetRevision: HEAD
+        path: .
+        helm:
+          releaseName: "{{`{{name}}`}}"
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: argo-events
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
